@@ -1,17 +1,14 @@
 import s from './ImageGalleryItem.module.scss';
 import PropTypes from 'prop-types';
 
-//  id, webformatURL, largeImageURL;
-
 function ImageGalleryItem({ img, openModal }) {
-  const { webformatURL, largeImageURL } = img;
+  const { webformatURL, largeImageURL, tags } = img;
   const handleClick = modalImg => {
-    openModal(modalImg);
+    openModal(modalImg, tags);
   };
-  // console.log(largeImageURL);
   return (
-    <li className={s.item} onClick={() => handleClick(largeImageURL)}>
-      <img src={webformatURL} alt="" className={s.image} />
+    <li className={s.item} onClick={() => handleClick(largeImageURL, tags)}>
+      <img src={webformatURL} alt={tags} className={s.image} />
     </li>
   );
 }

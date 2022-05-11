@@ -27,11 +27,11 @@ class Modal extends Component {
   };
 
   render() {
-    const { modalImg } = this.props;
+    const { modalImg, tags } = this.props;
     return createPortal(
       <div className={s.overlay} onClick={this.clickBackdrop}>
         <div className={s.modal}>
-          <img src={modalImg} alt="" />
+          <img src={modalImg} alt={tags} />
         </div>
       </div>,
       modalRoot
@@ -43,5 +43,6 @@ export default Modal;
 
 Modal.propTypes = {
   modalImg: PropTypes.string,
+  tags: PropTypes.string,
   closeModal: PropTypes.func.isRequired,
 };

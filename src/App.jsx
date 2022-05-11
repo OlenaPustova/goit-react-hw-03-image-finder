@@ -9,24 +9,31 @@ class App extends Component {
     query: '',
     isModal: false,
     modalImg: null,
+    tags: '',
   };
 
   changeSearch = query => {
     this.setState({ query: query });
   };
 
-  toggleModal = (modalImg = null) => {
-    this.setState(prev => ({ isModal: !prev.isModal, modalImg }));
+  toggleModal = (modalImg = null, tags = '') => {
+    this.setState(prev => ({ isModal: !prev.isModal, modalImg, tags }));
   };
 
   render() {
-    const { query, isModal, modalImg } = this.state;
+    const { query, isModal, modalImg, tags } = this.state;
     return (
       <div className={s.App}>
         <Searchbar changeSearch={this.changeSearch} />
         <ImageGallery query={query} toggleModal={this.toggleModal} />
 
-        {isModal && <Modal modalImg={modalImg} closeModal={this.toggleModal} />}
+        {isModal && (
+          <Modal
+            modalImg={modalImg}
+            closeModal={this.toggleModal}
+            tags={tags}
+          />
+        )}
       </div>
     );
   }

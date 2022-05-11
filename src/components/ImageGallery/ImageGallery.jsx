@@ -64,7 +64,6 @@ class ImageGallery extends Component {
   render() {
     const { images, loading, error, totalImages } = this.state;
     const { toggleModal } = this.props;
-    // console.log(toggleModal);
     return (
       <>
         {loading && <Loader />}
